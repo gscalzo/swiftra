@@ -27,9 +27,11 @@ import struct http4swift.HTTPRequest
 public struct Request {
 
     let underlying: HTTPRequest
+    public let params: [String: String]
 
-    init(underlying: HTTPRequest) {
+    init(underlying: HTTPRequest, params: [String: String] = [String: String]()) {
         self.underlying = underlying
+        self.params = params
     }
 
     public var method: String {

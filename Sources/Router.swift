@@ -36,8 +36,9 @@ class Router {
     func dispatch(request: Request) -> Response? {
         for entry in patterns {
             if entry.0 == request.method {
-                if let _ = entry.1.match(request.path) {
-                    return entry.2(request).response()
+                if let matcher = entry.1.match(request.path) {
+                    return entry.2(Request(underlying: request.underlying, 
+                                    params: matcher.params)).response()
                 }
             }
         }
