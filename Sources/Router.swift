@@ -38,7 +38,7 @@ class Router {
             if entry.0 == request.method {
                 if let matcher = entry.1.match(request.path) {
                     return entry.2(Request(underlying: request.underlying, 
-                                    params: matcher.params)).response()
+                                    parameters: matcher.params)).response()
                 }
             }
         }
